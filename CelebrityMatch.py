@@ -4,6 +4,7 @@ import requests
 import json
 import twitter
 from watson_developer_cloud import PersonalityInsightsV2 as PersonalityInsights
+import sys
 
 def analyze(handle):
   twitter_consumer_key = 'UMNc0eesIwAl4I4Eyhm6uJs7Y'
@@ -19,8 +20,13 @@ def analyze(handle):
   
   for status in statuses:
     if (status.lang == 'en'): #English tweets
-      text += status.text.encode('utf-8')
-      
+    #Adjusting for all types of Python  
+      if sys.version_info < (3, 0, 0):
+      	text += status.text.encode('utf-8')
+      else:
+      	text += status.text
+
+     
   #The IBM Bluemix credentials for Personality Insights!
   
   pi_username = '8b7c25fb-ee0f-4b78-ac4f-c0ba08f0412c'
