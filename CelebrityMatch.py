@@ -29,8 +29,8 @@ def analyze(handle):
      
   #The IBM Bluemix credentials for Personality Insights!
   
-  pi_username = '8b7c25fb-ee0f-4b78-ac4f-c0ba08f0412c'
-  pi_password = 'wdHuYAMCSid7'
+  pi_username = 'f16b1dcd-7501-45c7-bf12-2dd2a890488a'
+  pi_password = 'YzWEXF3AS8or'
   
   personality_insights = PersonalityInsights(username=pi_username, password=pi_password)
   pi_result = personality_insights.profile(text)
