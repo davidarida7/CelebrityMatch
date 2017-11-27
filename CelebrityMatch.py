@@ -7,10 +7,21 @@ from watson_developer_cloud import PersonalityInsightsV2 as PersonalityInsights
 import sys
 
 def analyze(handle):
-  twitter_consumer_key = 'UMNc0eesIwAl4I4Eyhm6uJs7Y'
-  twitter_consumer_secret = 'wNgOdAYiOzZep765JUr4GhpQZiPCYSd37gmlciBzXKf1wFObcG'
-  twitter_access_token = '2309257386-gmcluStAg3SYP2FdrE8kW0fHoCA9WTJmDWQ07qj'
-  twitter_access_secret = 'hqxZPA7bxlyvVRPhe3vfJAek8olSjIhMz8ex5Rgx9n6mw'
+  twitter_consumer_key_file = open("twitter-consumer-key.txt", "r")
+  twitter_consumer_key = twitter_consumer_key_file.read()
+  twitter_consumer_key_file.close()
+
+  twitter_consumer_secret_file = open("twitter-consumer-secret.txt", "r")
+  twitter_consumer_secret = twitter_consumer_secret_file.read()
+  twitter_consumer_secret_file.close()
+
+  twitter_access_token_file = open("twitter-access-token.txt", "r")
+  twitter_access_token = twitter_access_token_file.read()
+  twitter_access_token_file.close()
+
+  twitter_access_secret_file = open("twitter-access-secret.txt", "r")
+  twitter_access_secret = twitter_access_secret_file.read()
+  twitter_access_secret_file.close()
   
   twitter_api = twitter.Api(consumer_key=twitter_consumer_key, consumer_secret=twitter_consumer_secret, access_token_key=twitter_access_token, access_token_secret=twitter_access_secret)
   
@@ -28,9 +39,14 @@ def analyze(handle):
 
      
   #The IBM Bluemix credentials for Personality Insights!
-  
-  pi_username = 'f16b1dcd-7501-45c7-bf12-2dd2a890488a'
-  pi_password = 'YzWEXF3AS8or'
+
+  pi_username_file = open("ibm-username.txt", "r")
+  pi_username = pi_username_file.read()
+  pi_username_file.close()  
+
+  pi_password_file = open("ibm-password.txt", "r")
+  pi_password = pi_password_file.read()
+  pi_password_file.close()
   
   personality_insights = PersonalityInsights(username=pi_username, password=pi_password)
   pi_result = personality_insights.profile(text)
